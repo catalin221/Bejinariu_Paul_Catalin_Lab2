@@ -4,6 +4,7 @@ using Bejinariu_Paul_Catalin_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bejinariu_Paul_Catalin_Lab2.Migrations
 {
     [DbContext(typeof(Bejinariu_Paul_Catalin_Lab2Context))]
-    partial class Bejinariu_Paul_Catalin_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221104165507_AuthorUpdated")]
+    partial class AuthorUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
