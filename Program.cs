@@ -1,12 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Bejinariu_Paul_Catalin_Lab2.Data;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<Bejinariu_Paul_Catalin_Lab2Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Bejinariu_Paul_Catalin_Lab2Context") ?? throw new InvalidOperationException("Connection string 'Bejinariu_Paul_Catalin_Lab2Context' not found.")));
+
+builder.Services.AddDbContext<LibraryIdentityContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Bejinariu_Paul_Catalin_Lab2Context") ?? throw new InvalidOperationException("Connectionstring 'Bejinariu_Paul_Catalin_Lab2Context' not found.")));
+
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<LibraryIdentityContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+
+});
+
 
 var app = builder.Build();
 
@@ -22,6 +38,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 

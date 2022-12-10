@@ -9,8 +9,7 @@ namespace Bejinariu_Paul_Catalin_Lab2.Data
 {
     public class Bejinariu_Paul_Catalin_Lab2Context : DbContext
     {
-        public Bejinariu_Paul_Catalin_Lab2Context (DbContextOptions<Bejinariu_Paul_Catalin_Lab2Context> options)
-            : base(options)
+        public Bejinariu_Paul_Catalin_Lab2Context (DbContextOptions<Bejinariu_Paul_Catalin_Lab2Context> options): base(options)
         {
         }
 
@@ -21,5 +20,9 @@ namespace Bejinariu_Paul_Catalin_Lab2.Data
         public DbSet<Bejinariu_Paul_Catalin_Lab2.Models.Category> Category { get; set; }
 
         public DbSet<Bejinariu_Paul_Catalin_Lab2.Models.Author> Author { get; set; }
+
+        public DbSet<Bejinariu_Paul_Catalin_Lab2.Models.Member> Member { get; set; }
+
+        public DbSet<Bejinariu_Paul_Catalin_Lab2.Models.Borrowing> Borrowing { get; set; }
     }
 }
